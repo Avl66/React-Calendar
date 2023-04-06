@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).[Datefns](https://date-fns.org/) library is used to manipulate the date object and [React testing library](https://testing-library.com/docs/) is used to test the components.
 
 ## Available Scripts
 
