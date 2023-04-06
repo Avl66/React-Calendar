@@ -1,38 +1,211 @@
-.App {
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+/* VARIABLES */
+
+:root {
+  --main-color: #1a8fff;
+  --text-color: #777;
+  --text-color-light: #ccc;
+  --border-color: #eee;
+  --bg-color: #f9f9f9;
+  --neutral-color: #fff;
+}
+
+/* GENERAL */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-color);
+  background: var(--bg-color);
+  position: relative;
+}
+
+header {
+  display: block;
+  width: 100%;
+  padding: 1.25em 0;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--neutral-color);
+  font-size: 175%;
+  text-align: center;
+  color: coral;
+}
+
+main {
+  display: block;
+  margin: 0 auto;
+  margin-top: 3em;
+  max-width: 50em;
+}
+
+/* GRID */
+
+.row {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.row-middle {
+  align-items: center;
+}
+
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.col-start {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.col-center {
+  justify-content: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.col-end {
+  justify-content: flex-end;
+  text-align: right;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Calendar */
+
+.calendar {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: var(--neutral-color);
+  border: 1px solid var(--border-color);
+  margin-top: 2rem;
+  box-shadow: 0px 0px 0px grey;
+  transition: box-shadow 0.2s ease-out;
+}
+.calendar:hover {
+  box-shadow: 1px 8px 20px grey;
+  transition: box-shadow 0.6s ease-in;
+}
+.calendar .header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 115%;
+  padding: 1.5em 0;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.calendar .days {
+  background-color: #f28158;
+  font-weight: 600;
+  font-size: 90%;
+  color: #fff;
+  padding: 0.75em 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .body .cell {
+  position: relative;
+  height: 5em;
+  border-right: 1px solid var(--border-color);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--neutral-color);
+  transition: 0.25s ease-out;
+}
+
+.calendar .body .cell:hover {
+  background: var(--bg-color);
+  transition: 0.5s ease-out;
+}
+
+.calendar .body .selected {
+  background: linear-gradient(
+    65deg,
+    hsl(40, 100%, 55%) 0%,
+    hwb(174 33% 5%) 40%
+  );
+}
+
+.calendar .body .row {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.calendar .body .row:last-child {
+  border-bottom: none;
+}
+
+.calendar .body .cell:last-child {
+  border-right: none;
+}
+
+.calendar .body .cell .number {
+  position: absolute;
+  font-size: 82.5%;
+  line-height: 1;
+  top: 0.75em;
+  right: 0.75em;
+  font-weight: 700;
+}
+
+.calendar .body .cell:hover .bg,
+.calendar .body .selected .bg {
+  opacity: 0.05;
+  transition: 0.5s ease-in;
+}
+
+.calendar .body .col {
+  flex-grow: 0;
+  flex-basis: calc(100% / 7);
+  width: calc(100% / 7);
+}
+/* Form */
+
+form {
+  width: 100%;
+  height: 15vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 5px 10px;
+}
+label,
+input,
+button {
+  display: block;
+}
+input[type='text'] {
+  font-size: 20px;
+  padding: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  margin: 10px 0;
+  background: #1a8fff;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 18px;
+  border: none;
+  color: #fff;
+}
+#errorMsg {
+  color: rgb(230, 55, 55);
+  text-align: center;
+  margin-top: 15px;
 }

@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.week-day {
+  background: white;
+  color: black;
+  padding: 3px;
+}
+.today {
+  background: yellow;
+  border: 1.8px solid black;
+}
